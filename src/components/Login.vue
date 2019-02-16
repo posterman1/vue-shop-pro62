@@ -11,7 +11,7 @@
             <i slot="prefix" class="iconfont icon-user"></i>
           </el-input>
         </el-form-item>
-        <el-form-item   prop="password">
+        <el-form-item prop="password">
           <el-input v-model="loginForm.password" type="password">
             <i slot="prefix" class="iconfont icon-3702mima"></i>
           </el-input>
@@ -33,8 +33,8 @@ export default {
     return {
       // 登录Form表单需要的数据对象
       loginForm: {
-        username: '',
-        password: ''
+        username: 'admin',
+        password: '123456'
       },
       // 给各个表单域定义检验规则
       loginFormRules: {
@@ -52,7 +52,7 @@ export default {
         if (valid === true) {
           // 用户信息真实性检验
           // axios带着用户信息 去后端数据库校验
-         const { data: res } = await this.$http.post('/login', this.loginForm)
+          const { data: res } = await this.$http.post('/login', this.loginForm)
           // console.log(res)
           // 判断用户名和密码检验失败
           if (res.meta.status !== 200) {
@@ -63,7 +63,7 @@ export default {
           window.sessionStorage.setItem('token', res.data.token)
 
           // (校验成功)页面重新定向到后台首页
-           this.$router.push('/home')
+          this.$router.push('/home')
         }
       })
     },

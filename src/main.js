@@ -9,12 +9,25 @@ import 'element-ui/lib/theme-chalk/index.css'
 import './assets/fonts/iconfont.css'
 // 引入element-ui组件库模块
 import ElementUI from 'element-ui'
-// 把element-ui注册给vue
-Vue.use(ElementUI)
 // 引入axios并做相关配置
 import axios from 'axios'
+// 把element-ui注册给vue
+Vue.use(ElementUI)
+
 // axios请求根地址
 axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
+// axios请求拦截器（在其中配置token）
+axios.interceptors.request.use(
+  function(config) {
+    // config:代表axios的子级配置对象
+    var token = window.sessionStorage.getItem('token')
+    config.headers.Authorization = token
+    return config
+  },
+  function(error) {
+    return Promise.reject(error)
+  }
+)
 // 给axios配置给vue的￥http成员
 Vue.prototype.$http = axios
 

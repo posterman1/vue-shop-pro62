@@ -3,3 +3,11 @@ html,body,#app{
     padding: 0;
     margin: 0;
 }
+/*给左侧权限菜单设置样式*/
+.el-submenu__title,
+.ei-menu-item{
+    font-size: 13px;
+}
+i.iconfont{
+    margin-right:10px ;
+}
