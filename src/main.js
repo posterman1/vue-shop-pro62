@@ -28,7 +28,7 @@ axios.interceptors.request.use(
     return Promise.reject(error)
   }
 )
-// 给axios配置给vue的￥http成员
+// 给axios配置给vue的http成员
 Vue.prototype.$http = axios
 
 Vue.config.productionTip = false
